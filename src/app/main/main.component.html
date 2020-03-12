@@ -1,0 +1,24 @@
+<div class="main">
+  <div class="main__header">
+    <div class="main__header-line"></div>
+    <div class="main__header-text">Skills Matrix - Frontend Develop</div>
+  </div>
+  <ng-container *ngFor="let category of categories">
+    <div class="main__sub-header">
+      <div class="main__sub-header-line">{{ category.title }}</div>
+      <div class="main__sub-header-text">{{ category.desc }}</div>
+    </div>
+    <div class="main__card-wrapper">
+      <ng-container *ngFor="let skill of category.skills">
+        <app-form-card [skill]="skill"></app-form-card>
+      </ng-container>
+    </div>
+  </ng-container>
+  <div class="main__required" *ngIf="formSubmitted && matrixForm.invalid">
+    Please fill out all required info
+  </div>
+  <div class="main__buttons">
+    <button class="btn">Back</button>
+    <button class="btn" (click)="submitGroup()">Next</button>
+  </div>
+</div>
